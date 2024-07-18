@@ -33,10 +33,9 @@ To get a local copy up and running, follow these steps:
    ```
 
 3. **Set up json-server**:
-   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
-   - Set up Authentication with email/password sign-in method.
-   - Create a Realtime Database or Firestore Database for storing quiz data.
-   - Copy Firebase configuration keys to `src/firebase/firebase.js`.
+   ```
+   npm run server
+   ```
 
 4. **Start the development server**:
    ```
@@ -53,11 +52,6 @@ This project can be easily deployed to Firebase Hosting or any other hosting pro
 1. **Build the project**:
    ```
    npm run build
-   ```
-
-2. **Deploy to Firebase Hosting**:
-   ```
-   npm run server
    ```
 
 ## Contributing
