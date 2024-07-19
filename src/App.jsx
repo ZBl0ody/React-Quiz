@@ -18,7 +18,9 @@ const initilaState = {
   index: 0,
   answer: null,
   points: 0,
-  highscore: 0,
+  highscore: localStorage.getItem("highscore")
+    ? parseInt(localStorage.getItem("highscore"))
+    : 0,
   secondsRemaining: null,
 };
 
@@ -44,11 +46,13 @@ function reducer(state, action) {
         status: "ready",
       };
     case "finish":
+      const newHighscore =
+        state.points > state.highscore ? state.points : state.highscore;
+      localStorage.setItem("highscore", newHighscore);
       return {
         ...state,
         status: "finished",
-        highscore:
-          state.points > state.highscore ? state.points : state.highscore,
+        highscore: newHighscore,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -71,7 +75,6 @@ function reducer(state, action) {
       throw new Error("action unkonwn");
   }
 }
-
 const App = () => {
   const [
     { questions, status, index, answer, points, highscore, secondsRemaining },
